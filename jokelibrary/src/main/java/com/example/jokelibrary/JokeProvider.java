@@ -2,7 +2,7 @@ package com.example.jokelibrary;
 
 public class JokeProvider {
 
-    public String getJoke(){
+    public static String getJoke(){
         return "Joke placeholder";
     }
 }
