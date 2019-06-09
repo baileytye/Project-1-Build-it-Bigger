@@ -34,6 +34,9 @@ android {
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
+
+    sourceSets { main { java.srcDirs = ['src/main/java'] } }
+
 }
 
 dependencies {
@@ -41,17 +44,23 @@ dependencies {
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.gms:play-services-ads:17.2.1'
-    implementation 'com.google.api-client:google-api-client:1.25.0'
-    implementation 'com.google.http-client:google-http-client-android:1.23.0'
+    implementation 'com.google.api-client:google-api-client:1.29.0'
+    implementation 'com.google.http-client:google-http-client-android:1.29.1'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    implementation 'androidx.annotation:annotation:' + rootProject.androidxLibVersion
 
     testImplementation 'junit:junit:4.12'
+
+    // Testing-only dependencies
+    androidTestImplementation 'androidx.test:core:' + rootProject.coreVersion
+    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.extJUnitVersion
+    androidTestImplementation 'androidx.test:runner:' + rootProject.runnerVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+    // Note that espresso-idling-resource is used in the code under test.
+    implementation 'androidx.test.espresso:espresso-idling-resource:' + rootProject.espressoVersion
+
+
     implementation project(path: ':jokelibrary')
     implementation project(path: ':jokeactivitylibrary')
+    implementation 'junit:junit:4.12'
 }
-
-

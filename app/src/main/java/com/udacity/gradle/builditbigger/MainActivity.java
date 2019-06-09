@@ -1,18 +1,28 @@
 package com.udacity.gradle.builditbigger;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.test.espresso.IdlingResource;
+
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
 
 import com.example.jokeactivitylibrary.JokeActivity;
-import com.example.jokelibrary.JokeProvider;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.OnDoneCallback{
+
+    // The Idling Resource which will be null in production.
+    @Nullable private SimpleIdlingResource mIdlingResource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +54,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JokeActivity.EXTRA_JOKE, JokeProvider.getJoke());
-        startActivity(intent);
-        //Toast.makeText(this, new JokeProvider().getJoke(), Toast.LENGTH_SHORT).show();
+        new EndpointsAsyncTask(this, mIdlingResource).execute();
+
     }
 
 
+    @Override
+    public void onDone(String result) {
+        Intent intent = new Intent(this, JokeActivity.class);
+        intent.putExtra(JokeActivity.EXTRA_JOKE, result);
+        startActivity(intent);
+    }
+
+    /**
+     * Only called from test, creates and returns a new {@link SimpleIdlingResource}.
+     */
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
+    }
 }
