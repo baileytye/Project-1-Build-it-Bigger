@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import androidx.annotation.Nullable;
 
@@ -15,9 +14,9 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
 
-    private OnDoneCallback callback;
+    private final OnDoneCallback callback;
     @Nullable
-    private SimpleIdlingResource idlingResource;
+    private final SimpleIdlingResource idlingResource;
 
 
     public interface OnDoneCallback{
@@ -45,7 +44,7 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
                     .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) {
                             abstractGoogleClientRequest.setDisableGZipContent(true);
                         }
                     });

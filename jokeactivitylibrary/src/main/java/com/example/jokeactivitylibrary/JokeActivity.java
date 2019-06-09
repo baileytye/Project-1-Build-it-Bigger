@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class JokeActivity extends AppCompatActivity {
 
     public static final String EXTRA_JOKE = "extra_joke";
-    TextView jokeTextView;
+    private TextView jokeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

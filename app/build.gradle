@@ -35,12 +35,6 @@ android {
         exclude 'META-INF/DEPENDENCIES'
     }
 
-    sourceSets {
-        main { java.srcDirs = ['src/main/java'] } 
-        free {res.srcDirs = ['src/free/res', 'src/free/res/layout'] }
-        paid {res.srcDirs = ['src/paid/res', 'src/paid/res/layout'] }
-    }
-
     flavorDimensions "version"
     productFlavors {
         free {

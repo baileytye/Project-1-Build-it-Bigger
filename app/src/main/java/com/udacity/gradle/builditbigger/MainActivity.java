@@ -14,18 +14,13 @@ import androidx.test.espresso.IdlingResource;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 
 import com.example.jokeactivitylibrary.JokeActivity;
-import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
-import com.udacity.gradle.builditbigger.R;
-import com.udacity.gradle.builditbigger.SimpleIdlingResource;
 
 
 public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.OnDoneCallback {
 
-    ProgressBar progressBar;
 
     // The Idling Resource which will be null in production.
     @Nullable private SimpleIdlingResource mIdlingResource;
