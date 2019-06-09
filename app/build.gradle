@@ -35,7 +35,23 @@ android {
         exclude 'META-INF/DEPENDENCIES'
     }
 
-    sourceSets { main { java.srcDirs = ['src/main/java'] } }
+    sourceSets {
+        main { java.srcDirs = ['src/main/java'] } 
+        free {res.srcDirs = ['src/free/res', 'src/free/res/layout'] }
+        paid {res.srcDirs = ['src/paid/res', 'src/paid/res/layout'] }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        free {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 
 }
 
@@ -43,11 +59,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.gms:play-services-ads:17.2.1'
+    freeImplementation 'com.google.android.gms:play-services-ads:17.2.1'
     implementation 'com.google.api-client:google-api-client:1.29.0'
     implementation 'com.google.http-client:google-http-client-android:1.29.1'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'androidx.annotation:annotation:' + rootProject.androidxLibVersion
+    //implementation 'androidx.annotation:annotation:' + rootProject.androidxLibVersion
 
     testImplementation 'junit:junit:4.12'
 
@@ -63,4 +79,5 @@ dependencies {
     implementation project(path: ':jokelibrary')
     implementation project(path: ':jokeactivitylibrary')
     implementation 'junit:junit:4.12'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

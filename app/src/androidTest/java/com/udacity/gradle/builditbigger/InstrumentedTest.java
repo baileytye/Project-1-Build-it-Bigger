@@ -4,9 +4,6 @@ import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.IdlingResource;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.udacity.gradle.builditbigger.MainActivity;
-import com.udacity.gradle.builditbigger.R;
-
 import androidx.test.core.app.ActivityScenario;
 
 import org.junit.After;

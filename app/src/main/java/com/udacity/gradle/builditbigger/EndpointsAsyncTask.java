@@ -2,9 +2,6 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Pair;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -17,13 +14,13 @@ import java.io.IOException;
 
 public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
-    public OnDoneCallback callback;
+
+    private OnDoneCallback callback;
     @Nullable
     private SimpleIdlingResource idlingResource;
 
 
-    interface OnDoneCallback{
+    public interface OnDoneCallback{
         void onDone(String result);
     }
 
