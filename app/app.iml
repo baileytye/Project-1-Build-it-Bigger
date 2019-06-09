@@ -233,8 +233,6 @@
     <orderEntry type="library" name="Gradle: androidx.annotation:annotation:1.1.0-rc01@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-gass:17.2.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client:1.29.1@jar" level="project" />
-    <orderEntry type="module" module-name="jokelibrary" />
-    <orderEntry type="module" module-name="jokeactivitylibrary" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:core:1.2.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.ext:junit:1.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />

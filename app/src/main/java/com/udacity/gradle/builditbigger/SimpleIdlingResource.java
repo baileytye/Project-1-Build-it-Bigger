@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * multiple threads or need to keep a count of pending operations.
  */
 
-public class SimpleIdlingResource implements IdlingResource {
+class SimpleIdlingResource implements IdlingResource {
 
     @Nullable private volatile ResourceCallback mCallback;
 
